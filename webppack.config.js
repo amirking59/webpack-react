@@ -8,13 +8,14 @@ const autoprefixer = require('autoprefixer')
 
 module.exports = {
   mode: 'development',
-  entry: './src/main.js',
+  entry: './src/main.tsx',
+  devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './dist')
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -22,6 +23,11 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader"
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
       },
       {
         test: /\.s?css$/,
