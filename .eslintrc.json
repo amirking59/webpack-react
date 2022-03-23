@@ -22,6 +22,7 @@
     "rules": {
         "import/extensions": 0,
         "import/no-unresolved": 0,
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }]
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+        "react/react-in-jsx-scope": 0
     }
 }
