@@ -1,3 +1,16 @@
-import { camelCase } from 'lodash'
+// libs
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(camelCase('test_test'))
+// components
+import App from "./App";
+
+// styles
+import './index.scss'
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
