@@ -7,9 +7,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // css
 const autoprefixer = require('autoprefixer');
 
-// linting
-const ESLintPlugin = require('eslint-webpack-plugin');
-
 module.exports = {
   mode: 'development',
   entry: './src/main.tsx',
@@ -48,13 +45,18 @@ module.exports = {
   },
   plugins: [new CleanWebpackPlugin(), new HtmlWebpackPlugin({
     template: './public/index.html',
-  }), new MiniCssExtractPlugin(), new ESLintPlugin({
-    extensions: ['js', 'ts', 'jsx', 'tsx'],
-  })],
+  }), new MiniCssExtractPlugin()],
   devServer: {
     hot: true,
+    open: true,
+    port: 8080,
     static: {
-      directory: path.join(__dirname, 'public'),
+      directory: 'public',
+    },
+    client: {
+      logging: 'info',
+      overlay: true,
+      progress: true,
     },
   },
 };
