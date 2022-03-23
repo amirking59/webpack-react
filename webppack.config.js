@@ -1,10 +1,14 @@
-const path = require('path')
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 // css
-const autoprefixer = require('autoprefixer')
+const autoprefixer = require('autoprefixer');
+
+// linting
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -12,7 +16,7 @@ module.exports = {
   devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist')
+    path: path.resolve(__dirname, './dist'),
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
@@ -22,7 +26,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: 'babel-loader',
       },
       {
         test: /\.tsx?$/,
@@ -31,24 +35,26 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", {
+        use: [MiniCssExtractPlugin.loader, 'css-loader', {
           loader: 'postcss-loader',
           options: {
             postcssOptions: {
-              plugins: [autoprefixer()]
-            }
-          }
-        }, "sass-loader"]
-      }
-    ]
+              plugins: [autoprefixer()],
+            },
+          },
+        }, 'sass-loader'],
+      },
+    ],
   },
   plugins: [new CleanWebpackPlugin(), new HtmlWebpackPlugin({
-    template: './public/index.html'
-  }), new MiniCssExtractPlugin()],
+    template: './public/index.html',
+  }), new MiniCssExtractPlugin(), new ESLintPlugin({
+    extensions: ['js', 'ts', 'jsx', 'tsx'],
+  })],
   devServer: {
     hot: true,
     static: {
       directory: path.join(__dirname, 'public'),
     },
-  }
-}
+  },
+};
