@@ -1,11 +1,14 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+// tools
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 // css
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
+
+// html
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -40,6 +43,13 @@ module.exports = {
             },
           },
         }, 'sass-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          outputPath: 'images'
+        },
       },
     ],
   },
