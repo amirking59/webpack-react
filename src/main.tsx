@@ -1,12 +1,12 @@
-import { render } from 'react-dom';
+import { render } from 'react-dom'
 
 // components
-import App from './App';
+import App from './App'
 
 // styles
-import './index.scss';
+import './index.scss'
 
 render(
   <App />,
   document.getElementById('root'),
-);
+)
