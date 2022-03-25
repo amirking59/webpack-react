@@ -8,7 +8,8 @@
           "browsers": "last 2 versions"
         },
         "modules": false,
-        "loose": false
+        "loose": false,
+        "runtime": "automatic"
       }
     ]
   ],
