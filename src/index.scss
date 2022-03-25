@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'roboto';
+  src: url('./assets/fonts/roboto-regular.woff2?#iefix') format('woff2'),
+  url('./assets/fonts/roboto-regular.woff') format('woff'),
+  url('./assets/fonts/roboto-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Roboto", serif;
+}
+
 .main {
-    background: linear-gradient(#e98a00, #f5aa2f);
+  background: linear-gradient(#e98a00, #f5aa2f);
 }

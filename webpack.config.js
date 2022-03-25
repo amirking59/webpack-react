@@ -34,16 +34,23 @@ module.exports = {
         loader: 'ts-loader',
       },
       {
-        test: /\.s?css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
-      },
-      {
         test: /\.(png|jpe?g|gif)$/i,
         loader: 'file-loader',
         options: {
           outputPath: 'images'
         },
       },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          outputPath: 'fonts'
+        }
+      },
+      {
+        test: /\.s?css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+      }
     ],
   },
   plugins: [new CleanWebpackPlugin(), new HtmlWebpackPlugin({
